@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+    @Scripts.Render("~/bundles/jquery")
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    @Scripts.Render("~/bundles/modernizr")
+    <script>
+
+        //$(function () {
+        //    $("#dialog_sample").dialog({
+        //        height: 140,
+        //        modal : true
+        //    });
+        //});
+
+        //$("#btnPost").click(function () {
+        //    var employee = new Object();
+        //    employee.Name = $('#txtName').val();
+        //    employee.Address = $('#txtDesignation').val();
+        //    employee.Location = $('#txtLocation').val();
+        //    if (employee != null) {
+        //        $.ajax({
+        //            type: "POST",
+        //            url: "/JQueryAjaxCall/AjaxPostCall",
+        //            data: JSON.stringify(employee),
+        //            contentType: "application/json; charset=utf-8",
+        //            dataType: "json",
+        //            success: function (response) {
+        //                if (response != null) {
+        //                    alert("Name : " + response.Name + ", Designation : " + response.Designation + ", Location :" + response.Location);
+        //                } else {
+        //                    alert("Something went wrong");
+        //                }
+        //            },
+        //            failure: function (response) {
+        //                alert(response.responseText);
+        //            },
+        //            error: function (response) {
+        //                alert(response.responseText);
+        //            }
+        //        });
+        //    }
+        //});
+
+        @*$("#order-summary-panel").click(function () {
+            $.ajax({
+                url: '@Url.Action("PopupPost", "Home")',
+                type: 'POST',
+                success: function (data) {
+                    if (data) {  // check if data is defined
+                        if (data.success) { // if success is true
+                            alert("It Worked!");
+                            // you could read data.order
+                        }
+                    }
+                }
+            });
+        })*@
+
+
+        $(function () {            
+            $("#dialog_sample").dialog({
+                autoOpen:false,
+                width: 650,
+                height: 450,
+                show: {
+                    effect: "shake",
+                    duration:100
+                },
+                hide: {
+                    effect: "explode",
+                    duraion:500
+
+                }
+            });
+
+
+            $("#Open").click(function () {
+                $("#dialog_sample").dialog("open");
+            });
+
+
+            //function onSuccess(){
+            //    $("#dialog_sample").dialog("close");
+            //}
+
+        });
+
+
+    </script>
+</head>
+
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+  
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
